@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কিশোরগঞ্জ ল্যান্ড প্রপার্টিজ | বিশ্বস্ত জমি ক্রয়-বিক্রয় মাধ্যম</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Hind Siliguri for Clean Bangla -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669', // Primary Green
+                            700: '#047857',
+                            800: '#065f46',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f8fafc; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-slate-800 pb-16 md:pb-0">
+
+    <!-- ================= 1. TOP NAVIGATION BAR ================= -->
+    <header class="bg-white shadow-sm sticky top-0 z-40 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <div onclick="navigateTo('home')" class="flex items-center gap-2 cursor-pointer">
+                <div class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center text-white text-xl font-bold">
+                    <i class="fa-solid fa-Seedling"></i><i class="fa-solid fa-map-location-dot"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-brand-800 leading-none">কিশোরগঞ্জ ল্যান্ড</h1>
+                    <p class="text-xs text-slate-500">বিশ্বস্ত জমি ক্রয়-বিক্রয় কেন্দ্র</p>
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-6 font-medium text-slate-700">
+                <button onclick="navigateTo('home')" class="hover:text-brand-600 transition">হোমপেজ</button>
+                <button onclick="navigateTo('properties')" class="hover:text-brand-600 transition">সকল জমি</button>
+                <button onclick="scrollToSection('sell-section')" class="hover:text-brand-600 transition">জমি বিক্রি করুন</button>
+                <button onclick="scrollToSection('about-section')" class="hover:text-brand-600 transition">আমাদের সম্পর্কে</button>
+                <button onclick="scrollToSection('contact-section')" class="hover:text-brand-600 transition">যোগাযোগ</button>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-3">
+                <button onclick="scrollToSection('sell-section')" class="hidden sm:inline-flex items-center gap-2 bg-brand-50 text-brand-700 border border-brand-200 px-4 py-2 rounded-lg font-semibold hover:bg-brand-100 transition text-sm">
+                    <i class="fa-solid fa-plus-circle"></i> জমি বিক্রি করুন
+                </button>
+                <a href="tel:+8801700000000" class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 text-sm shadow-sm">
+                    <i class="fa-solid fa-phone"></i> <span class="hidden sm:inline">কল করুন</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= 2. HOME VIEW ================= -->
+    <main id="view-home">
+        
+        <!-- HERO SECTION & YOUTUBE-STYLE SMART SEARCH -->
+        <section class="bg-gradient-to-b from-brand-800 via-brand-700 to-brand-600 text-white py-12 md:py-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="inline-block bg-brand-700 border border-brand-500 text-brand-100 text-xs sm:text-sm px-3 py-1 rounded-full mb-4">
+                    <i class="fa-solid fa-check-circle text-brand-400 mr-1"></i> ১০০% কাগজপত্র যাচাইকৃত নিষ্কণ্টক জমি
+                </span>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                    কিশোরগঞ্জে আপনার স্বপ্নের জমি খুঁজুন সবচেয়ে সহজে
+                </h2>
+                <p class="text-brand-100 text-base sm:text-lg mb-8 max-w-2xl mx-auto">
+                    আবাসিক, বাণিজ্যিক কিংবা কৃষি জমি—আপনার বাজেট ও পছন্দের এলাকা লিখে নিচে সার্চ করুন।
+                </p>
+
+                <!-- YOUTUBE-STYLE SMART SEARCH BAR -->
+                <div class="relative max-w-2xl mx-auto text-slate-800 z-30">
+                    <div class="flex items-center bg-white rounded-full shadow-lg overflow-hidden border-2 border-transparent focus-within:border-brand-400">
+                        <div class="pl-5 text-slate-400">
+                            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                        </div>
+                        <input 
+                            type="text" 
+                            id="smart-search-input"
+                            placeholder="আপনি কেমন জমি খুঁজছেন? এলাকা বা বাজেট লিখুন..." 
+                            class="w-full py-4 px-3 sm:px-4 text-base sm:text-lg focus:outline-none"
+                            autocomplete="off"
+                            oninput="handleSearchInput(this.value)"
+                            onfocus="handleSearchInput(this.value)"
+                            onkeydown="if(event.key === 'Enter') executeSmartSearch()"
+                        >
+                        <button id="clear-search-btn" onclick="clearSmartSearch()" class="hidden px-3 text-slate-400 hover:text-slate-600">
+                            <i class="fa-solid fa-xmark text-xl"></i>
+                        </button>
+                        <button onclick="executeSmartSearch()" class="bg-brand-600 hover:bg-brand-700 text-white px-6 sm:px-8 py-4 font-semibold text-base sm:text-lg transition">
+                            খুঁজুন
+                        </button>
+                    </div>
+
+                    <!-- Auto Suggestions Dropdown (YouTube Style) -->
+                    <div id="search-suggestions" class="hidden absolute left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-slate-100 text-left overflow-hidden z-50">
+                        <!-- Dynamic Suggestions Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Quick Search Tags -->
+                <div class="mt-6 flex flex-wrap justify-center gap-2 text-xs sm:text-sm">
+                    <span class="text-brand-200 py-1">জনপ্রিয় সার্চ:</span>
+                    <button onclick="quickSearch('কিশোরগঞ্জ সদর')" class="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full transition">কিশোরগঞ্জ সদরে জমি</button>
+                    <button onclick="quickSearch('ভৈরব')" class="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full transition">ভৈরবে জমি</button>
+                    <button onclick="quickSearch('আবাসিক')" class="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full transition">আবাসিক প্লট</button>
+                    <button onclick="quickSearch('রাস্তার পাশে')" class="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full transition">রাস্তার পাশে জমি</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED PROPERTIES SECTION -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-800">বিশেষ নির্বাচিত জমি (Featured)</h3>
+                    <p class="text-slate-500 text-sm">সবচেয়ে ভালো লোকেশনের বাছাইকৃত জমিগুলো দেখুন</p>
+                </div>
+                <button onclick="navigateTo('properties')" class="text-brand-600 hover:text-brand-700 font-semibold text-sm sm:text-base flex items-center gap-1">
+                    সব দেখুন <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+            <div id="featured-properties-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards injected via JS -->
+            </div>
+        </section>
+
+        <!-- LATEST PROPERTIES SECTION -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 border-t border-slate-200">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-800">নতুন যুক্ত হওয়া জমি</h3>
+                    <p class="text-slate-500 text-sm">সম্প্রতি বিক্রির জন্য তালিকাভুক্ত জমিগুলো</p>
+                </div>
+                <button onclick="navigateTo('properties')" class="bg-white border border-slate-300 hover:border-brand-600 text-slate-700 px-4 py-2 rounded-lg font-medium text-sm transition">
+                    সকল জমি দেখুন
+                </button>
+            </div>
+            <div id="latest-properties-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards injected via JS -->
+            </div>
+        </section>
+
+        <!-- SELL YOUR LAND CTA SECTION -->
+        <section id="sell-section" class="bg-brand-50 border-y border-brand-100 py-12 px-4 mt-8">
+            <div class="max-w-5xl mx-auto bg-white p-6 sm:p-10 rounded-2xl shadow-sm border border-brand-100 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-2 text-center md:text-left">
+                    <span class="text-brand-600 font-semibold text-sm uppercase tracking-wider">জমির মালিকদের জন্য</span>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-800">আপনি কি আপনার জমি দ্রুত ও সঠিক দামে বিক্রি করতে চান?</h3>
+                    <p class="text-slate-600 max-w-xl">আপনার জমির তথ্য ও ছবি আমাদের দিন। আমরাই প্রকৃত ক্রেতা খুঁজে আপনার জমি বিক্রির ব্যবস্থা করে দেবো।</p>
+                </div>
+                <div class="flex-shrink-0">
+                    <button onclick="alert('২য় ধাপে আমরা জমি বিক্রির পূর্ণাঙ্গ ফর্ম ও ডাটাবেজ যুক্ত করব!')" class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-4 rounded-xl font-bold text-lg shadow-md transition flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> জমির তথ্য জমা দিন
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT US & CONTACT SECTION -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- About Us -->
+            <div id="about-section" class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-user-tie text-brand-600"></i> আমাদের সম্পর্কে
+                </h3>
+                <p class="text-slate-600 leading-relaxed mb-4">
+                    আসসালামু আলাইকুম। আমি কিশোরগঞ্জ জেলার একজন পেশাদার রিয়েল এস্টেট এজেন্ট। দীর্ঘদিন ধরে সততা ও নিষ্ঠার সাথে কিশোরগঞ্জের ১৩টি উপজেলায় নিষ্কণ্টক জমি কেনাবেচায় ক্রেতা ও বিক্রেতাদের সেবা দিয়ে আসছি।
+                </p>
+                <ul class="space-y-2 text-slate-700 text-sm font-medium">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600"></i> সরেজমিনে জমি পরিদর্শন ও মাপজোকের সুবিধা।</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600"></i> খতিয়ান, দলিল ও নামজারি শতভাগ যাচাইকরণ।</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600"></i> রেজিস্ট্রেশন পর্যন্ত সম্পূর্ণ আইনি ও দাপ্তরিক সহযোগিতা।</li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div id="contact-section" class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-headset text-brand-600"></i> সরাসরি যোগাযোগ করুন
+                    </h3>
+                    <p class="text-slate-600 text-sm mb-6">যেকোনো জমির বিস্তারিত জানতে বা সরাসরি জমি দেখতে নিচের নম্বরে কল বা হোয়াটসঅ্যাপ করুন:</p>
+                    
+                    <div class="space-y-3 text-slate-700">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <p class="text-xs text-slate-400">মোবাইল নম্বর</p>
+                                <p class="font-bold text-lg">+880 1700-000000</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <p class="text-xs text-slate-400">অফিসের ঠিকানা</p>
+                                <p class="font-semibold">স্টেশন রোড, কিশোরগঞ্জ সদর, কিশোরগঞ্জ।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mt-6">
+                    <a href="tel:+8801700000000" class="bg-brand-600 hover:bg-brand-700 text-white py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone"></i> কল করুন
+                    </a>
+                    <a href="https://wa.me/8801700000000" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= 3. ALL PROPERTIES & SEARCH RESULT VIEW ================= -->
+    <main id="view-properties" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header & Active Search Banner -->
+        <div class="mb-6">
+            <h2 id="properties-page-title" class="text-2xl sm:text-3xl font-bold text-slate-800">সকল বিক্রয়যোগ্য জমি</h2>
+            <p id="search-status-text" class="text-slate-500 text-sm mt-1">কিশোরগঞ্জ জেলার যাচাইকৃত জমির তালিকা</p>
+        </div>
+
+        <!-- Simple & Essential Filters Bar -->
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            <!-- Upazila Filter -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-500 mb-1">উপজেলা</label>
+                <select id="filter-upazila" onchange="applyFilters()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-600">
+                    <option value="all">সকল উপজেলা (১৩টি)</option>
+                    <option value="কিশোরগঞ্জ সদর">কিশোরগঞ্জ সদর</option>
+                    <option value="ভৈরব">ভৈরব</option>
+                    <option value="বাজিতপুর">বাজিতপুর</option>
+                    <option value="করিমগঞ্জ">করিমগঞ্জ</option>
+                    <option value="কটিয়াদী">কটিয়াদী</option>
+                    <option value="পাকুন্দিয়া">পাকুন্দিয়া</option>
+                    <option value="কুলিয়ারচর">কুলিয়ারচর</option>
+                    <option value="তাড়াইল">তাড়াইল</option>
+                    <option value="হোসেনপুর">হোসেনপুর</option>
+                    <option value="ইটনা">ইটনা</option>
+                    <option value="মিঠামইন">মিঠামইন</option>
+                    <option value="অষ্টগ্রাম">অষ্টগ্রাম</option>
+                    <option value="নিকলী">নিকলী</option>
+                </select>
+            </div>
+
+            <!-- Land Type Filter -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-500 mb-1">জমির ধরন</label>
+                <select id="filter-type" onchange="applyFilters()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-600">
+                    <option value="all">সব ধরনের জমি</option>
+                    <option value="আবাসিক">আবাসিক (বাড়ি করার উপযোগী)</option>
+                    <option value="বাণিজ্যিক">বাণিজ্যিক / মার্কেট</option>
+                    <option value="কৃষি">কৃষি / ফসলি জমি</option>
+                </select>
+            </div>
+
+            <!-- Budget Filter -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-500 mb-1">সর্বোচ্চ বাজেট</label>
+                <select id="filter-budget" onchange="applyFilters()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-600">
+                    <option value="all">যেকোনো বাজেট</option>
+                    <option value="1000000">১০ লাখের মধ্যে</option>
+                    <option value="2500000">২৫ লাখের মধ্যে</option>
+                    <option value="5000000">৫০ লাখের মধ্যে</option>
+                    <option value="10000000">১ কোটির মধ্যে</option>
+                </select>
+            </div>
+
+            <!-- Sort Filter -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-500 mb-1">সাজান (Sort)</label>
+                <select id="filter-sort" onchange="applyFilters()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-600">
+                    <option value="newest">নতুন জমি আগে</option>
+                    <option value="price_low">কম দাম থেকে বেশি দাম</option>
+                    <option value="price_high">বেশি দাম থেকে কম দাম</option>
+                </select>
+            </div>
+
+            <!-- Reset Button -->
+            <div class="flex items-end">
+                <button onclick="resetAllFilters()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 px-3 rounded-lg text-sm font-medium transition">
+                    <i class="fa-solid fa-rotate-right mr-1"></i> ফিল্টার মুছুন
+                </button>
+            </div>
+        </div>
+
+        <!-- Properties Grid -->
+        <div id="all-properties-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Injected via JS -->
+        </div>
+
+        <!-- No Result Message -->
+        <div id="no-result-box" class="hidden bg-white p-12 rounded-2xl text-center border border-slate-200 my-6">
+            <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-magnifying-glass-minus"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 mb-2">দুঃখিত, আপনার পছন্দের জমি পাওয়া যায়নি</h3>
+            <p class="text-slate-500 mb-6">অন্য কোনো উপজেলা বা বাজেট পরিবর্তন করে আবার চেষ্টা করুন।</p>
+            <button onclick="resetAllFilters()" class="bg-brand-600 text-white px-6 py-2.5 rounded-lg font-semibold">সকল জমি দেখুন</button>
+        </div>
+    </main>
+
+    <!-- ================= 4. PROPERTY DETAILS VIEW ================= -->
+    <main id="view-details" class="hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <button onclick="navigateTo('properties')" class="mb-4 inline-flex items-center gap-2 text-slate-600 hover:text-brand-600 font-medium">
+            <i class="fa-solid fa-arrow-left"></i> তালিকায় ফিরে যান
+        </button>
+
+        <div id="property-details-container" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <!-- Dynamic Content Injected via JS -->
+        </div>
+    </main>
+
+    <!-- ================= 5. SIMPLE FOOTER ================= -->
+    <footer class="bg-slate-900 text-slate-400 py-8 px-4 mt-12">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+            <div>
+                <p class="text-white font-bold text-base">কিশোরগঞ্জ ল্যান্ড প্রপার্টিজ</p>
+                <p>সততা ও আস্থার সাথে জমি ক্রয়-বিক্রয় সেবা।</p>
+            </div>
+            <div class="flex gap-4">
+                <button onclick="navigateTo('home')" class="hover:text-white">হোম</button>
+                <button onclick="navigateTo('properties')" class="hover:text-white">সকল জমি</button>
+                <button onclick="alert('৩য় ধাপে Admin Login ও Dashboard যুক্ত করা হবে!')" class="text-slate-500 hover:text-brand-400"><i class="fa-solid fa-lock text-xs"></i> Admin</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= 6. MOBILE BOTTOM NAVIGATION ================= -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 flex justify-around items-center h-16 z-40 shadow-lg">
+        <button onclick="navigateTo('home')" class="flex flex-col items-center justify-center w-full h-full text-brand-600">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-xs font-medium mt-0.5">Home</span>
+        </button>
+        <button onclick="focusSearchMobile()" class="flex flex-col items-center justify-center w-full h-full text-slate-600 hover:text-brand-600">
+            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+            <span class="text-xs font-medium mt-0.5">Search</span>
+        </button>
+        <button onclick="scrollToSection('contact-section')" class="flex flex-col items-center justify-center w-full h-full text-slate-600 hover:text-brand-600">
+            <i class="fa-solid fa-phone-volume text-lg"></i>
+            <span class="text-xs font-medium mt-0.5">Contact</span>
+        </button>
+    </nav>
+
+    <!-- ================= JAVASCRIPT LOGIC & DATABASE STRUCTURE ================= -->
+    <script>
+        // Agent Phone & WhatsApp Number (আপনার নিজের নম্বর এখানে দেবেন)
+        const AGENT_PHONE = "+8801700000000";
+        const AGENT_WHATSAPP = "8801700000000";
+
+        // Future-proof Database Structure (Currently Kishoreganj, scalable to any District)
+        const propertiesDB = [
+            {
+                id: "KL-101",
+                title: "কিশোরগঞ্জ সদরে মেইন রোডের পাশে ১০ শতাংশ উঁচু আবাসিক জমি",
+                district: "কিশোরগঞ্জ",
+                upazila: "কিশোরগঞ্জ সদর",
+                union: "যশোদল",
+                village: "যশোদল মধ্যপাড়া",
+                areaDecimal: 10,
+                priceTotal: 3500000,
+                priceDisplay: "৩৫ লাখ টাকা (মোট)",
+                type: "আবাসিক",
+                roadInfo: "১৬ ফিট পাকা রাস্তা সংলগ্ন",
+                utilities: "বিদ্যুৎ ও ড্রেনেজ ব্যবস্থা আছে",
+                papersStatus: "১০০% যাচাইকৃত (খারিজ ও খাজনা হালনাগাদ)",
+                status: "Available",
+                featured: true,
+                mapLink: "https://maps.google.com",
+                images: [
+                    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1628624747186-a941c476b7ef?auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "কিশোরগঞ্জ সদর হাসপাতালের খুব কাছেই যশোদল এলাকায় ১০ শতাংশ সম্পূর্ণ উঁচু ভিটা জমি বিক্রি হবে। এখনই বাড়ি করার উপযোগী। কোনো মাটি ভরাট করতে হবে না।",
+                searchKeywords: "কিশোরগঞ্জ সদর kishoreganj sadar আবাসিক 10 শতাংশ ৩৫ লাখ রাস্তার পাশে জমি"
+            },
+            {
+                id: "KL-102",
+                title: "ভৈরব বাসস্ট্যান্ডের কাছে ৮ শতাংশ বাণিজ্যিক জমি",
+                district: "কিশোরগঞ্জ",
+                upazila: "ভৈরব",
+                union: "ভৈরব পৌরসভা",
+                village: "কমলপুর",
+                areaDecimal: 8,
+                priceTotal: 6400000,
+                priceDisplay: "৬৪ লাখ টাকা (৮ লাখ/শতাংশ)",
+                type: "বাণিজ্যিক",
+                roadInfo: "২৪ ফিট হাইওয়ে সার্ভিস রোড",
+                utilities: "বিদ্যুৎ, পানি ও গ্যাস সংযোগের সুবিধা",
+                papersStatus: "একক মালিকানা, নিষ্কণ্টক দলিল",
+                status: "Available",
+                featured: true,
+                mapLink: "https://maps.google.com",
+                images: [
+                    "https://images.unsplash.com/photo-1628624747186-a941c476b7ef?auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "ভৈরব কমলপুর এলাকায় গোডাউন, মার্কেট বা বহুতল ভবন নির্মাণের জন্য অত্যন্ত চমৎকার ৮ শতাংশ জমি।",
+                searchKeywords: "ভৈরব bhairab বাণিজ্যিক commercial ৮ শতাংশ রাস্তার পাশে জমি"
+            },
+            {
+                id: "KL-103",
+                title: "করিমগঞ্জে কম বাজেটে ১৫ শতাংশ নিষ্কণ্টক আবাসিক ও বাগান বাড়ির জমি",
+                district: "কিশোরগঞ্জ",
+                upazila: "করিমগঞ্জ",
+                union: "কাদিরজঙ্গল",
+                village: "সাতুটী",
+                areaDecimal: 15,
+                priceTotal: 1200000,
+                priceDisplay: "১২ লাখ টাকা (মোট)",
+                type: "আবাসিক",
+                roadInfo: "১২ ফিট ইটের সলিং রাস্তা",
+                utilities: "পল্লী বিদ্যুৎ লাইন একদম পাশে",
+                papersStatus: "আর.এস ও নামজারি কমপ্লিট",
+                status: "Available",
+                featured: true,
+                mapLink: "",
+                images: [
+                    "https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "শান্ত ও মনোরম পরিবেশে বাড়ি বা বাগান বাড়ি করার জন্য করিমগঞ্জের কাদিরজঙ্গলে ১৫ শতাংশ দারুণ জমি। বাজেট যাদের ১০-১২ লাখের মধ্যে তাদের জন্য সেরা।",
+                searchKeywords: "করিমগঞ্জ karimganj আবাসিক ১০ লাখ টাকার মধ্যে জমি ১২ লাখ ১৫ শতাংশ"
+            },
+            {
+                id: "KL-104",
+                title: "পাকুন্দিয়া বাজারে ৬ শতাংশ রেডি প্লট",
+                district: "কিশোরগঞ্জ",
+                upazila: "পাকুন্দিয়া",
+                union: "পাকুন্দিয়া পৌরসভা",
+                village: "হাপানিয়া",
+                areaDecimal: 6,
+                priceTotal: 1800000,
+                priceDisplay: "১৮ লাখ টাকা",
+                type: "আবাসিক",
+                roadInfo: "১০ ফিট সরকারি রাস্তা",
+                utilities: "বিদ্যুৎ ও পৌরসভার পানি",
+                papersStatus: "১০০% যাচাইকৃত",
+                status: "Sold",
+                featured: false,
+                mapLink: "",
+                images: [
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "পাকুন্দিয়া পৌরসভার ভেতরে চারপাশে বাউন্ডারি করা ৬ শতাংশ রেডি প্লট।",
+                searchKeywords: "পাকুন্দিয়া pakundia আবাসিক ৬ শতাংশ ১৮ লাখ"
+            },
+            {
+                id: "KL-105",
+                title: "কটিয়াদীতে ৩০ শতাংশ তিন ফসলি উর্বর কৃষি জমি",
+                district: "কিশোরগঞ্জ",
+                upazila: "কটিয়াদী",
+                union: "জালালপুর",
+                village: "চর ঝাকালিয়া",
+                areaDecimal: 30,
+                priceTotal: 950000,
+                priceDisplay: "৯.৫০ লাখ টাকা (মোট)",
+                type: "কৃষি",
+                roadInfo: "গ্রামীণ কাঁচা রাস্তা সংলগ্ন",
+                utilities: "সেচ সুবিধা রয়েছে",
+                papersStatus: "সব কাগজপত্র সঠিক আছে",
+                status: "Available",
+                featured: false,
+                mapLink: "",
+                images: [
+                    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "কম দামে যারা কৃষি খামার বা ফসলি জমি খুঁজছেন তাদের জন্য ১০ লাখের নিচে ৩০ শতাংশ জমি।",
+                searchKeywords: "কটিয়াদী katiadi কৃষি ফসলি ১০ লাখ টাকার মধ্যে জমি ৩০ শতাংশ"
+            }
+        ];
+
+        // YouTube-Style Predefined Smart Suggestions
+        const defaultSuggestions = [
+            "কিশোরগঞ্জ সদরে জমি",
+            "ভৈরবে ১০ শতাংশ জমি",
+            "করিমগঞ্জে আবাসিক জমি",
+            "১০ লাখ টাকার মধ্যে জমি",
+            "রাস্তার পাশে জমি",
+            "পাকুন্দিয়ায় রেডি প্লট",
+            "কটিয়াদীতে কৃষি জমি"
+        ];
+
+        let currentSearchQuery = "";
+
+        // ================= INITIALIZE WEBSITE =================
+        window.onload = () => {
+            renderHomeProperties();
+            renderAllProperties(propertiesDB);
+
+            // Hide suggestions when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#smart-search-input') && !e.target.closest('#search-suggestions')) {
+                    document.getElementById('search-suggestions').classList.add('hidden');
+                }
+            });
+        };
+
+        // ================= PROPERTY CARD GENERATOR =================
+        function createPropertyCard(prop) {
+            const isSold = prop.status === "Sold";
+            const badgeClass = isSold ? "bg-red-600 text-white" : "bg-brand-600 text-white";
+            const badgeText = isSold ? "বিক্রি হয়ে গেছে (Sold)" : "বিক্রয়যোগ্য (Available)";
+
+            return `
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <!-- Image Box -->
+                        <div class="relative h-52 bg-slate-200 overflow-hidden cursor-pointer" onclick="openPropertyDetails('${prop.id}')">
+                            <img src="${prop.images[0]}" alt="${prop.title}" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                            <span class="absolute top-3 left-3 ${badgeClass} text-xs font-bold px-3 py-1 rounded-full shadow">
+                                ${badgeText}
+                            </span>
+                            <span class="absolute top-3 right-3 bg-slate-900/80 text-white text-xs font-mono px-2.5 py-1 rounded-md">
+                                ID: ${prop.id}
+                            </span>
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-3 text-white flex justify-between items-end">
+                                <span class="font-bold text-lg text-brand-200">${prop.priceDisplay}</span>
+                                <span class="bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded text-xs">${prop.type}</span>
+                            </div>
+                        </div>
+
+                        <!-- Info Box -->
+                        <div class="p-4">
+                            <div class="flex items-center gap-1.5 text-xs font-semibold text-brand-700 mb-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>${prop.upazila}, ${prop.union} (${prop.village})</span>
+                            </div>
+                            <h4 onclick="openPropertyDetails('${prop.id}')" class="font-bold text-slate-800 text-base sm:text-lg mb-3 line-clamp-2 hover:text-brand-600 cursor-pointer">
+                                ${prop.title}
+                            </h4>
+                            
+                            <div class="grid grid-cols-2 gap-2 bg-slate-50 p-2.5 rounded-xl border border-slate-100 text-xs sm:text-sm">
+                                <div>
+                                    <span class="text-slate-400 block text-xs">জমির পরিমাণ</span>
+                                    <span class="font-bold text-slate-700"><i class="fa-solid fa-ruler-combined text-brand-600 mr-1"></i> ${prop.areaDecimal} শতাংশ</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block text-xs">রাস্তার সুবিধা</span>
+                                    <span class="font-semibold text-slate-700 truncate block">${prop.roadInfo}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="px-4 pb-4">
+                        <button onclick="openPropertyDetails('${prop.id}')" class="w-full bg-brand-50 hover:bg-brand-600 text-brand-700 hover:text-white border border-brand-200 font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-2">
+                            বিস্তারিত দেখুন <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderHomeProperties() {
+            const featured = propertiesDB.filter(p => p.featured && p.status === 'Available').slice(0, 3);
+            const latest = propertiesDB.slice(0, 3);
+
+            document.getElementById('featured-properties-grid').innerHTML = featured.map(createPropertyCard).join('');
+            document.getElementById('latest-properties-grid').innerHTML = latest.map(createPropertyCard).join('');
+        }
+
+        function renderAllProperties(list) {
+            const grid = document.getElementById('all-properties-grid');
+            const noResult = document.getElementById('no-result-box');
+
+            if (list.length === 0) {
+                grid.innerHTML = '';
+                noResult.classList.remove('hidden');
+            } else {
+                noResult.classList.add('hidden');
+                grid.innerHTML = list.map(createPropertyCard).join('');
+            }
+        }
+
+        // ================= YOUTUBE-STYLE SMART SEARCH LOGIC =================
+        function handleSearchInput(query) {
+            const clearBtn = document.getElementById('clear-search-btn');
+            const suggestionBox = document.getElementById('search-suggestions');
+            query = query.trim();
+
+            if (query.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            // Generate Matching Suggestions
+            let matches = [];
+            if (query === "") {
+                matches = defaultSuggestions.slice(0, 5);
+            } else {
+                const qLow = query.toLowerCase();
+                // Match from default phrases + live property titles & locations
+                const dynamicPool = [
+                    ...defaultSuggestions,
+                    ...propertiesDB.map(p => `${p.upazila} এ ${p.type} জমি`),
+                    ...propertiesDB.map(p => p.title)
+                ];
+                matches = [...new Set(dynamicPool)].filter(item => item.toLowerCase().includes(qLow)).slice(0, 6);
+            }
+
+            if (matches.length > 0) {
+                suggestionBox.innerHTML = matches.map(text => `
+                    <div onclick="selectSuggestion('${text}')" class="px-5 py-3 hover:bg-slate-100 cursor-pointer flex items-center gap-3 text-sm sm:text-base border-b border-slate-50 last:border-none">
+                        <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+                        <span class="font-medium text-slate-700">${text}</span>
+                    </div>
+                `).join('');
+                suggestionBox.classList.remove('hidden');
+            } else {
+                suggestionBox.classList.add('hidden');
+            }
+        }
+
+        function selectSuggestion(text) {
+            document.getElementById('smart-search-input').value = text;
+            document.getElementById('search-suggestions').classList.add('hidden');
+            executeSmartSearch();
+        }
+
+        function quickSearch(keyword) {
+            document.getElementById('smart-search-input').value = keyword;
+            executeSmartSearch();
+        }
+
+        function clearSmartSearch() {
+            document.getElementById('smart-search-input').value = '';
+            document.getElementById('clear-search-btn').classList.add('hidden');
+            document.getElementById('search-suggestions').classList.add('hidden');
+            currentSearchQuery = "";
+            resetAllFilters();
+        }
+
+        function executeSmartSearch() {
+            const query = document.getElementById('smart-search-input').value.trim();
+            document.getElementById('search-suggestions').classList.add('hidden');
+            currentSearchQuery = query;
+
+            navigateTo('properties');
+
+            if (query) {
+                document.getElementById('properties-page-title').innerText = `"${query}" - এর সার্চ ফলাফল`;
+            } else {
+                document.getElementById('properties-page-title').innerText = `সকল বিক্রয়যোগ্য জমি`;
+            }
+
+            applyFilters();
+        }
+
+        // ================= FILTER & SORT SYSTEM =================
+        function applyFilters() {
+            const upazila = document.getElementById('filter-upazila').value;
+            const type = document.getElementById('filter-type').value;
+            const budget = document.getElementById('filter-budget').value;
+            const sort = document.getElementById('filter-sort').value;
+
+            let filtered = propertiesDB.filter(prop => {
+                // 1. Smart Search Keyword Match
+                if (currentSearchQuery) {
+                    const q = currentSearchQuery.toLowerCase();
+                    const searchableText = `${prop.title} ${prop.upazila} ${prop.union} ${prop.village} ${prop.type} ${prop.priceDisplay} ${prop.areaDecimal} ${prop.searchKeywords}`.toLowerCase();
+                    
+                    // Check if budget phrase like "১০ লাখ" is searched
+                    if (q.includes("১০ লাখ") && prop.priceTotal <= 1200000) {
+                        return true;
+                    }
+                    
+                    // Token matching (matches if important words exist)
+                    const words = q.split(" ").filter(w => !['এ', 'জমি', 'টাকার', 'মধ্যে', 'শতাংশ'].includes(w));
+                    const matchFound = words.length === 0 ? searchableText.includes(q) : words.some(w => searchableText.includes(w));
+                    if (!matchFound) return false;
+                }
+
+                // 2. Dropdown Filters
+                if (upazila !== 'all' && prop.upazila !== upazila) return false;
+                if (type !== 'all' && prop.type !== type) return false;
+                if (budget !== 'all' && prop.priceTotal > parseInt(budget)) return false;
+
+                return true;
+            });
+
+            // 3. Sorting
+            if (sort === 'price_low') {
+                filtered.sort((a, b) => a.priceTotal - b.priceTotal);
+            } else if (sort === 'price_high') {
+                filtered.sort((a, b) => b.priceTotal - a.priceTotal);
+            }
+
+            document.getElementById('search-status-text').innerText = `মোট ${filtered.length} টি জমি পাওয়া গেছে`;
+            renderAllProperties(filtered);
+        }
+
+        function resetAllFilters() {
+            currentSearchQuery = "";
+            document.getElementById('smart-search-input').value = "";
+            document.getElementById('filter-upazila').value = "all";
+            document.getElementById('filter-type').value = "all";
+            document.getElementById('filter-budget').value = "all";
+            document.getElementById('filter-sort').value = "newest";
+            document.getElementById('properties-page-title').innerText = "সকল বিক্রয়যোগ্য জমি";
+            applyFilters();
+        }
+
+        // ================= PROPERTY DETAILS PAGE =================
+        function openPropertyDetails(id) {
+            const prop = propertiesDB.find(p => p.id === id);
+            if (!prop) return;
+
+            const isSold = prop.status === "Sold";
+            const whatsappMsg = encodeURIComponent(`আসসালামু আলাইকুম, আমি আপনার ওয়েবসাইটে "${prop.title}" (Property ID: ${prop.id}) জমিটি দেখেছি। আমি এ বিষয়ে বিস্তারিত জানতে চাই।`);
+
+            const container = document.getElementById('property-details-container');
+            container.innerHTML = `
+                <!-- Main Image & Gallery -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 bg-slate-100 p-2">
+                    <div class="md:col-span-2 h-64 sm:h-96 rounded-xl overflow-hidden">
+                        <img id="main-gallery-img" src="${prop.images[0]}" class="w-full h-full object-cover" alt="${prop.title}">
+                    </div>
+                    <div class="flex md:flex-col gap-2 overflow-x-auto">
+                        ${prop.images.map((img, idx) => `
+                            <img onclick="document.getElementById('main-gallery-img').src='${img}'" src="${img}" class="h-20 md:h-28 w-28 md:w-full object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-brand-600">
+                        `).join('')}
+                        <div class="bg-brand-50 rounded-lg p-4 flex flex-col justify-center items-center text-center flex-grow">
+                            <span class="text-xs text-slate-500">Property ID</span>
+                            <span class="text-xl font-bold font-mono text-brand-700">${prop.id}</span>
+                            <span class="mt-2 px-3 py-1 rounded-full text-xs font-bold ${isSold ? 'bg-red-100 text-red-700' : 'bg-brand-100 text-brand-700'}">
+                                ${isSold ? 'বিক্রি হয়ে গেছে' : 'বিক্রয়যোগ্য (Available)'}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Body -->
+                <div class="p-6 sm:p-8">
+                    <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-200">
+                        <div>
+                            <span class="bg-brand-100 text-brand-800 text-xs font-bold px-3 py-1 rounded-full">${prop.type} জমি</span>
+                            <h1 class="text-2xl sm:text-3xl font-bold text-slate-800 mt-2">${prop.title}</h1>
+                            <p class="text-slate-600 mt-1 flex items-center gap-1.5">
+                                <i class="fa-solid fa-location-dot text-brand-600"></i> 
+                                গ্রাম: ${prop.village}, ইউনিয়ন: ${prop.union}, উপজেলা: ${prop.upazila}, জেলা: ${prop.district}
+                            </p>
+                        </div>
+                        <div class="bg-brand-50 px-5 py-3 rounded-2xl border border-brand-200">
+                            <span class="text-xs text-slate-500 block">জমির মূল্য</span>
+                            <span class="text-2xl font-bold text-brand-700">${prop.priceDisplay}</span>
+                        </div>
+                    </div>
+
+                    <!-- Key Specifications Grid -->
+                    <h3 class="font-bold text-lg text-slate-800 mt-6 mb-4">জমির সংক্ষিপ্ত তথ্য</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200 text-sm">
+                        <div>
+                            <span class="text-slate-400 block text-xs">জমির পরিমাণ</span>
+                            <span class="font-bold text-slate-800 text-base">${prop.areaDecimal} শতাংশ</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block text-xs">উপজেলা ও ইউনিয়ন</span>
+                            <span class="font-bold text-slate-800">${prop.upazila} (${prop.union})</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block text-xs">রাস্তার তথ্য</span>
+                            <span class="font-bold text-slate-800">${prop.roadInfo}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block text-xs">বিদ্যুৎ ও অন্যান্য সুবিধা</span>
+                            <span class="font-bold text-slate-800">${prop.utilities}</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="text-slate-400 block text-xs">মালিকানা ও কাগজপত্রের অবস্থা</span>
+                            <span class="font-bold text-brand-700"><i class="fa-solid fa-shield-halved mr-1"></i> ${prop.papersStatus}</span>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Description -->
+                    <div class="mt-6">
+                        <h3 class="font-bold text-lg text-slate-800 mb-2">বিস্তারিত বিবরণ</h3>
+                        <p class="text-slate-600 leading-relaxed">${prop.description}</p>
+                    </div>
+
+                    ${prop.mapLink ? `
+                        <div class="mt-6">
+                            <a href="${prop.mapLink}" target="_blank" class="inline-flex items-center gap-2 text-brand-600 font-semibold hover:underline">
+                                <i class="fa-solid fa-map-location-dot"></i> Google Maps-এ জমির লোকেশন দেখুন
+                            </a>
+                        </div>
+                    ` : ''}
+
+                    <!-- Big Action Buttons (Call & WhatsApp) -->
+                    <div class="mt-8 pt-6 border-t border-slate-200">
+                        <p class="text-center text-sm text-slate-500 mb-3">জমিটি সরাসরি দেখতে বা বিস্তারিত কথা বলতে নিচের বাটনে ক্লিক করুন:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <a href="tel:${AGENT_PHONE}" class="bg-brand-600 hover:bg-brand-700 text-white py-4 px-6 rounded-xl font-bold text-lg text-center flex items-center justify-center gap-3 shadow-md transition">
+                                <i class="fa-solid fa-phone-volume text-xl"></i> Call Now (${AGENT_PHONE})
+                            </a>
+                            <a href="https://wa.me/${AGENT_WHATSAPP}?text=${whatsappMsg}" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white py-4 px-6 rounded-xl font-bold text-lg text-center flex items-center justify-center gap-3 shadow-md transition">
+                                <i class="fa-brands fa-whatsapp text-2xl"></i> WhatsApp এ মেসেজ দিন
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            navigateTo('details');
+        }
+
+        // ================= NAVIGATION CONTROLLER =================
+        function navigateTo(viewName) {
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-properties').classList.add('hidden');
+            document.getElementById('view-details').classList.add('hidden');
+
+            document.getElementById(`view-${viewName}`).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToSection(sectionId) {
+            navigateTo('home');
+            setTimeout(() => {
+                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        function focusSearchMobile() {
+            navigateTo('home');
+            setTimeout(() => {
+                const input = document.getElementById('smart-search-input');
+                input.focus();
+                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 150);
+        }
+    </script>
+</body>
+</html>
